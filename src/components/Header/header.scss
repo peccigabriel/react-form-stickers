@@ -1,0 +1,17 @@
+.header {
+  background: url("../../assets/img/header-img.svg");
+  width: 100%;
+  min-height: 186px;
+
+  &__title {
+    font-size: 23px;
+    font-weight: 300;
+    color: #fff;
+    padding: 24px 32px;
+
+    &--bold {
+      font-weight: bold;
+      line-height: 2.8rem;
+    }
+  }
+}
