@@ -1,29 +1,30 @@
+@import "../../assets/styles/style.scss";
+
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 42px;
   min-height: 42px;
-  background: #2f3676;
+  background-color: $button-primary;
   border-radius: 7px;
-  color: #fff;
+  color: $white;
   border: none;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: 800;
-
+  font-size: $size-medium;
+  font-weight: $weight-bold;
 
   &:hover {
-    background: #191847;
+    background-color: $button-hover;
   }
 
   &--disabled {
-    background: #c5cfd6;
-    color: #555;
+    background-color: $button-disabled;
+    color: $button-font-disabled;
     cursor: auto;
 
     &:hover {
-      background: #c5cfd6;
+      background-color: $button-disabled;
     }
   }
 }

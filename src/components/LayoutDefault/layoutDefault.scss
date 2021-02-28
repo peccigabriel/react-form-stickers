@@ -1,6 +1,8 @@
+@import '../../assets/styles/style.scss';
+
 .layout-default {
   margin: 40px auto;
-  background: #f2f2f2;
+  background: $default-grey;
   box-shadow: 10px 22px 24px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   max-width: 560px;

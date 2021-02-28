@@ -1,0 +1,27 @@
+/* colors */
+$button-primary: #2f3676;
+$button-hover: #191847;
+$button-disabled: #c5cfd6;
+$button-font-disabled: #555;
+
+$error: #f59393;
+$label-error: #f33232;
+
+$white: #fff;
+$grey: #dde3e9;
+$default-grey: #f2f2f2;
+$success: #00c57c;
+
+/* fonts size */
+$size-small: 14px;
+$size-medium: 18px;
+$size-large: 24px;
+
+/* font weight */
+$weight-xthin: 300;
+$weight-thin: 400;
+$weight-normal: 600;
+$weight-bold: 700;
+
+/* borders */
+$primary-border: 1px solid $button-primary;

@@ -1,3 +1,5 @@
+@import '../../assets/styles/style.scss';
+
 .checkbox {
   &__container {
     display: flex;
@@ -6,7 +8,7 @@
     padding-left: 32px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: $size-small;
 
     input {
       position: absolute;
@@ -17,7 +19,7 @@
 
       &:checked ~ .checkbox__container--checkmark,
       &:checked ~ .checkbox__container--error {
-        background-color: #2f3676;
+        background-color: $button-primary;
 
         &:after {
           display: block;
@@ -31,69 +33,35 @@
 
     &--labelError {
       padding-top: 4px;
-      color: #f33232;
+      color: $label-error
     }
 
     &--checkmark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 24px;
-      width: 24px;
-      background-color: #2f3676;
-      border-radius: 4px;
+      @include config-position-absolute;
+      background-color: $button-primary;
+      
 
       &:after {
-        content: "";
-        position: absolute;
-        display: none;
-        left: 8px;
-        top: 4px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        transform: rotate(45deg);
+        @include after-checkbox;
       }
     }
 
     &:hover input ~ &--checkmark {
-      background-color: #191847;
+      background-color: $button-hover
     }
 
     &--error {
-      position: absolute;
-      color: #f59393;
-      top: 0;
-      left: 0;
-      height: 24px;
-      width: 24px;
-      background-color: #f59393;
-      border-radius: 4px;
+      @include config-position-absolute;
+      background-color: $error;
 
       &:after {
-        content: "";
-        position: absolute;
-        display: none;
-        left: 8px;
-        top: 4px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        transform: rotate(45deg);
+        @include after-checkbox;
       }
     }
 
     &--disabled {
-      cursor: auto;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 24px;
-      width: 24px;
-      background-color: #c5cfd6;
-      border-radius: 4px;
+      @include config-position-absolute;
+      background-color: $button-disabled;
     }
   }
 }

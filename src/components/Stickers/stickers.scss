@@ -1,38 +1,28 @@
+@import "../../assets/styles/style.scss";
+
 .stickers {
   &__containers {
     margin: 32px;
   }
 
   &__title {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: $size-medium;
+    font-weight: $weight-normal;
     margin-bottom: 16px;
   }
 
   &__controllers {
     display: flex;
-    justify-content: space-between;
-    max-width: 160px;
   }
 
   &__input {
-    max-width: 60px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 700;
-    border: 1px solid #2f3676;
-    border-radius: 4px;
-    outline: none;
+    @include input-controllers;
+    border: $primary-border;
 
     &--error {
-      max-width: 60px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: 700;
-      border: 1px solid #F33232;
-      background-color: #F59393;
-      border-radius: 4px;
-      outline: none;
+      @include input-controllers;
+      border: 1px solid $label-error;
+      background-color: $error;
     }
   }
 
@@ -41,28 +31,28 @@
     height: 141px;
     resize: none;
     padding: 16px;
-    background: #dde3e9;
-    border: 1px solid #2f3676;
+    background: $grey;
+    border: $primary-border;
     border-radius: 4px;
     outline: none;
-    font-size: 14px;
+    font-size: $size-small;
     line-height: 24px;
-    font-weight: 400;
+    font-weight: $weight-thin;
   }
 
   &__footer {
     width: 100%;
     height: 100px;
-    background: #dde3e9;
+    background: $grey;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 32px;
 
     &--message {
-      font-size: 18px;
-      font-weight: 600;
-      color: #00C57C;
+      font-size: $size-medium;
+      font-weight: $weight-normal;
+      color: $success;
     }
 
     &--button {
