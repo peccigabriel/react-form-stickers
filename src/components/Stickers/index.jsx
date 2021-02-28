@@ -36,9 +36,7 @@ const Stickers = () => {
   };
 
   const handleSubmit = () => {
-    let value = 'Formulário enviado com sucesso!';
-    if (validate) value = 'Ops, tivemos algum probleminha, tente novamente!';
-    setSendMessage(value);
+    if (!validate) setSendMessage('Formulário enviado com sucesso!');
   };
 
   return (
@@ -93,6 +91,7 @@ const Stickers = () => {
         <textarea
           id="Observações do pedido"
           className="stickers__textarea"
+          placeholder="Escreva alguma observação sobre o pedido.."
           maxLength="255"
           value={form.observation}
           onChange={(e) =>
@@ -108,10 +107,13 @@ const Stickers = () => {
         <Button
           className="stickers__footer--button"
           arialabel={ACCESSIBILITY['SEND'].description}
-          action={handleSubmit}
+          action={sendMessage 
+            ? () => window.location.reload() 
+            : handleSubmit
+          }
           disabled={validate}
         >
-          Enviar
+          {sendMessage ? 'Pedir dnv?' : 'Enviar'}
         </Button>
       </footer>
     </form>
