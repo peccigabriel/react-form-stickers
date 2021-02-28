@@ -1,7 +1,7 @@
 import React from 'react';
 import './checkbox.scss';
 
-const Checkbox = ({ options, value, setValue }) => {
+const Checkbox = ({ options, value, setValue, disabled, error }) => {
   function handleChange({ target }) {
     if (target.checked) {
       setValue({
@@ -16,18 +16,32 @@ const Checkbox = ({ options, value, setValue }) => {
     }
   }
 
+  const setClassName = () => {
+    if (error) return 'error';
+    else if (disabled) return 'disabled';
+    else return 'checkmark';
+  };
+
   return (
     <div className="checkbox">
       {options.map((option) => (
-        <label key={option} className="checkbox__container">
+        <label htmlFor={option} key={option} className="checkbox__container">
           <input
+            id={option}
             type="checkbox"
-            value={option}
+            value={option || value.models[0]}
             checked={value?.models.includes(option)}
             onChange={handleChange}
+            disabled={disabled}
           />
-          <span className="checkbox__container--title">{option}</span>
-          <div className="checkbox__container--checkmark" />
+          <span
+            className={`checkbox__container--${
+              error ? 'labelError' : 'title'
+            }`}
+          >
+            {option}
+          </span>
+          <div className={`checkbox__container--${setClassName()}`} />
         </label>
       ))}
     </div>

@@ -13,13 +13,24 @@
     display: flex;
     justify-content: space-between;
     max-width: 160px;
+  }
 
-    &--input {
+  &__input {
+    max-width: 60px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    border: 1px solid #2f3676;
+    border-radius: 4px;
+    outline: none;
+
+    &--error {
       max-width: 60px;
       text-align: center;
       font-size: 20px;
       font-weight: 700;
-      border: 1px solid #2f3676;
+      border: 1px solid #F33232;
+      background-color: #F59393;
       border-radius: 4px;
       outline: none;
     }
@@ -44,9 +55,15 @@
     height: 100px;
     background: #dde3e9;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 32px;
+
+    &--message {
+      font-size: 18px;
+      font-weight: 600;
+      color: #00C57C;
+    }
 
     &--button {
       width: 132px;

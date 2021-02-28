@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
 import { ACCESSIBILITY } from './accessibility';
@@ -9,35 +9,48 @@ import './stickers.scss';
 
 const Stickers = () => {
   const stickersOptions = ['React', 'Vue', 'Angular'];
+  const [sendMessage, setSendMessage] = useState('');
+  const [validate, setValidate] = useState(false);
   const [form, setForm] = useState({
-    models: [],
-    counter: 0,
+    models: ['React'],
+    counter: 1,
     observation: '',
   });
 
+  useEffect(() => {
+    if (!form.models.length || form.counter === 0) setValidate(true);
+    else setValidate(false);
+  }, [form]);
+
   const handleIncrement = (value) => {
-    if (!value) {
+    if (!value)
       setForm({
         ...form,
         counter: 0,
       });
-    } else {
+    else
       setForm({
         ...form,
-        counter: value,
+        counter: parseInt(value),
       });
-    }
   };
 
   const handleSubmit = () => {
-    console.log('form', form);
+    let value = 'Formulário enviado com sucesso!';
+    if (validate) value = 'Ops, tivemos algum probleminha, tente novamente!';
+    setSendMessage(value);
   };
 
   return (
     <form className="stickers">
       <div className="stickers__containers">
         <h2 className="stickers__title">Quais stickers?</h2>
-        <Checkbox value={form} options={stickersOptions} setValue={setForm} />
+        <Checkbox
+          value={form}
+          options={stickersOptions}
+          setValue={setForm}
+          error={!form.models.length}
+        />
       </div>
       <div className="stickers__containers">
         <h2 className="stickers__title">Quantos stickers de cada?</h2>
@@ -56,9 +69,9 @@ const Stickers = () => {
           </Button>
           <label htmlFor="Quantidade de Stickers" />
           <input
-            className="stickers__controllers--input"
+            className={`stickers__input${form.counter === 0 ? '--error' : ''}`}
             id="Quantidade de Stickers"
-            onChange={(e) => handleIncrement(parseInt(e.target.value))}
+            onChange={(e) => handleIncrement(e.target.value)}
             value={form.counter}
           />
           <Button
@@ -91,10 +104,12 @@ const Stickers = () => {
         />
       </div>
       <footer className="stickers__footer">
+        <span className="stickers__footer--message">{sendMessage}</span>
         <Button
-          action={handleSubmit}
-          type="submit"
           className="stickers__footer--button"
+          arialabel={ACCESSIBILITY['SEND'].description}
+          action={handleSubmit}
+          disabled={validate}
         >
           Enviar
         </Button>
