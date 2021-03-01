@@ -41,7 +41,7 @@ const Stickers = () => {
 
   return (
     <form className="stickers">
-      <div className="stickers__containers">
+      <section className="stickers__containers">
         <h2 className="stickers__title">Quais stickers?</h2>
         <Checkbox
           value={form}
@@ -49,10 +49,10 @@ const Stickers = () => {
           setValue={setForm}
           error={!form.models.length}
         />
-      </div>
-      <div className="stickers__containers">
+      </section>
+      <section className="stickers__containers">
         <h2 className="stickers__title">Quantos stickers de cada?</h2>
-        <div className="stickers__controllers">
+        <section className="stickers__controllers">
           <Button
             arialabel={ACCESSIBILITY['MINUS'].description}
             disabled={form.counter === 0}
@@ -83,9 +83,9 @@ const Stickers = () => {
           >
             <Plus />
           </Button>
-        </div>
-      </div>
-      <div className="stickers__containers">
+        </section>
+      </section>
+      <section className="stickers__containers">
         <h2 className="stickers__title">Observações:</h2>
         <label htmlFor="Observações do pedido" />
         <textarea
@@ -101,7 +101,7 @@ const Stickers = () => {
             })
           }
         />
-      </div>
+      </section>
       <footer className="stickers__footer">
         <span className="stickers__footer--message">{sendMessage}</span>
         <Button
