@@ -21,18 +21,13 @@ const Stickers = () => {
     if (!form.models.length || form.counter === 0) setValidate(true);
     else setValidate(false);
   }, [form]);
-
+  
   const handleIncrement = (value) => {
-    if (!value)
-      setForm({
-        ...form,
-        counter: 0,
-      });
-    else
-      setForm({
-        ...form,
-        counter: parseInt(value),
-      });
+    if (!value) value = 0;
+    setForm({
+      ...form,
+      counter: parseInt(value)
+    });
   };
 
   const handleSubmit = () => {
