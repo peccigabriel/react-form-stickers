@@ -39,26 +39,4 @@
     line-height: 24px;
     font-weight: $weight-thin;
   }
-
-  &__footer {
-    width: 100%;
-    height: 100px;
-    background: $grey;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32px;
-
-    &--message {
-      font-size: $size-medium;
-      font-weight: $weight-normal;
-      color: $success;
-    }
-
-    &--button {
-      width: 132px;
-      height: 40px;
-      text-transform: uppercase;
-    }
-  }
 }

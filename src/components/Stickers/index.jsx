@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
+import { useStickersContext } from '../../components/_context/StickersContext';
 import { ACCESSIBILITY } from './accessibility';
 import { ReactComponent as Plus } from '../../assets/icons/Plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/Minus.svg';
@@ -9,29 +10,20 @@ import './stickers.scss';
 
 const Stickers = () => {
   const stickersOptions = ['React', 'Vue', 'Angular'];
-  const [sendMessage, setSendMessage] = useState('');
-  const [validate, setValidate] = useState(false);
-  const [form, setForm] = useState({
-    models: ['React'],
-    counter: 1,
-    observation: '',
-  });
+
+  const { setValidate, form, setForm } = useStickersContext();
 
   useEffect(() => {
     if (!form.models.length || form.counter === 0) setValidate(true);
     else setValidate(false);
-  }, [form]);
-  
+  }, [form, setValidate]);
+
   const handleIncrement = (value) => {
     if (!value) value = 0;
     setForm({
       ...form,
-      counter: parseInt(value)
+      counter: parseInt(value),
     });
-  };
-
-  const handleSubmit = () => {
-    if (!validate) setSendMessage('Formulário enviado com sucesso!');
   };
 
   return (
@@ -97,20 +89,6 @@ const Stickers = () => {
           }
         />
       </section>
-      <footer className="stickers__footer">
-        <span className="stickers__footer--message">{sendMessage}</span>
-        <Button
-          className="stickers__footer--button"
-          arialabel={ACCESSIBILITY['SEND'].description}
-          action={sendMessage 
-            ? () => window.location.reload() 
-            : handleSubmit
-          }
-          disabled={validate}
-        >
-          {sendMessage ? 'Pedir dnv?' : 'Enviar'}
-        </Button>
-      </footer>
     </form>
   );
 };
